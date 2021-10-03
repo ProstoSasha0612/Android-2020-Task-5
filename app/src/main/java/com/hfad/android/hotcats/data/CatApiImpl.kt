@@ -2,6 +2,7 @@ package com.hfad.android.hotcats.data
 
 import android.media.Image
 import android.util.Log
+import androidx.paging.toLiveData
 import com.hfad.android.hotcats.model.Cat
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -20,26 +21,5 @@ object CatApiImpl {
         .addConverterFactory(MoshiConverterFactory.create())
         .build()
 
-    private val catService = retrofit.create(CatApi::class.java)
-
-
-    suspend fun getCats(): MutableList<Cat> {
-        return withContext(Dispatchers.IO) {
-            val catApiDataList = catService.getCatsList()
-            val catList = mutableListOf<Cat>()
-            for (i in catApiDataList) {
-                catList.add(Cat(i.url, "Empty0"))
-            }
-            catList
-        }
-    }
-
-    suspend fun getCat(): Cat {
-        return withContext(Dispatchers.IO) {
-
-            val catApiData = catService.getCat()
-            val imageUrl = catApiData[0].url
-            Cat(imageUrl, "Empty)")
-        }
-    }
+    val catService = retrofit.create(CatApi::class.java)
 }

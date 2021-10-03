@@ -11,4 +11,5 @@
     <!--Colors-->
     <color name="list_background_color">#fff0e0</color>
     <color name="item_cat_background_color">#cbd9fe</color>
+    <color name="grey">#808080</color>
 </resources>

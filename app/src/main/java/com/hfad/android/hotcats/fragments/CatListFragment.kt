@@ -4,16 +4,27 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
+import androidx.paging.CombinedLoadStates
+import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.hfad.android.hotcats.CatAdapter
+import com.hfad.android.hotcats.data.CatApi
+import com.hfad.android.hotcats.data.CatApiImpl
 import com.hfad.android.hotcats.viemodels.CatListViewModel
 import com.hfad.android.hotcats.databinding.CatListFragmentBinding
 import com.hfad.android.hotcats.model.Cat
+import com.hfad.android.hotcats.viemodels.CatListViewModelFactory
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
-class CatListFragment : Fragment() {
+class CatListFragment() : Fragment() {
 
     private lateinit var viewModel: CatListViewModel
     private var _binding: CatListFragmentBinding? = null
@@ -27,7 +38,9 @@ class CatListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewModel = ViewModelProvider(this).get(CatListViewModel::class.java)
+        viewModel = ViewModelProvider(this, CatListViewModelFactory(CatApiImpl.catService)).get(
+            CatListViewModel::class.java
+        )
         _binding = CatListFragmentBinding.inflate(layoutInflater)
         return binding.root
     }
@@ -42,29 +55,16 @@ class CatListFragment : Fragment() {
             adapter = catAdapter
         }
 
-
-
-        //TODO make pagination here
-        binding.rvCats.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-                super.onScrollStateChanged(recyclerView, newState)
-                val lastVisibleItemPosition = catLayoutManager?.findLastVisibleItemPosition() ?: 0
-                val itemCount = (catAdapter?.itemCount?:0) - 2
-                if (lastVisibleItemPosition == itemCount) {
-                    repeat(5){
-                        viewModel.addCat()
-                    }
-                    catAdapter?.notifyDataSetChanged()
-                }
+        viewModel.viewModelScope.launch(Dispatchers.IO) {
+            viewModel.catList.collectLatest {
+                catAdapter?.submitData(it)
             }
-        })
-
-        viewModel.initList()
-        viewModel.catList.observe(viewLifecycleOwner) {
-            catAdapter?.submitList(it)
         }
 
-
+        catAdapter?.addLoadStateListener { state: CombinedLoadStates ->
+            binding.rvCats.isVisible = state.refresh != LoadState.Loading
+            binding.progress.isVisible = state.refresh == LoadState.Loading
+        }
     }
 
     override fun onDestroy() {

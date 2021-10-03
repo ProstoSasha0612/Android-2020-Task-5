@@ -1,5 +1,6 @@
 package com.hfad.android.hotcats.data
 
+import com.hfad.android.hotcats.model.Cat
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -14,3 +15,7 @@ data class CatApiData(
     @Json(name = "height")
     val height: String?
 )
+
+fun CatApiData.toCat(): Cat {
+    return Cat(url, id)
+}
