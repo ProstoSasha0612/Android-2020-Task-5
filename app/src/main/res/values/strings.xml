@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Funny Cats</string>
+    <string name="save_to_galery">Save to galery</string>
 </resources>

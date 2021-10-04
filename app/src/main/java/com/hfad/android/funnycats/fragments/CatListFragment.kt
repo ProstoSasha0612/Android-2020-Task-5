@@ -1,30 +1,29 @@
 package com.hfad.android.funnycats.fragments
 
+import android.animation.AnimatorSet
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import androidx.paging.CombinedLoadStates
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.hfad.android.funnycats.CatAdapter
-import com.hfad.android.funnycats.data.CatApi
+import com.hfad.android.funnycats.R
 import com.hfad.android.funnycats.data.CatApiImpl
-import com.hfad.android.funnycats.viemodels.CatListViewModel
-import com.hfad.android.hotcats.databinding.CatListFragmentBinding
+import com.hfad.android.funnycats.databinding.CatListFragmentBinding
 import com.hfad.android.funnycats.model.Cat
+import com.hfad.android.funnycats.viemodels.CatListViewModel
 import com.hfad.android.funnycats.viemodels.CatListViewModelFactory
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-class CatListFragment() : Fragment() {
+class CatListFragment() : Fragment(){
 
     private lateinit var viewModel: CatListViewModel
     private var _binding: CatListFragmentBinding? = null
@@ -32,7 +31,7 @@ class CatListFragment() : Fragment() {
         get() = requireNotNull(_binding)
     private var catAdapter: CatAdapter? = null
     private var catLayoutManager: LinearLayoutManager? = null
-    private lateinit var catList: MutableList<Cat>
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,7 +46,7 @@ class CatListFragment() : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        catAdapter = CatAdapter(requireContext())
+        catAdapter = CatAdapter(this.context)
         catLayoutManager = LinearLayoutManager(context)
 
         binding.rvCats.apply {
