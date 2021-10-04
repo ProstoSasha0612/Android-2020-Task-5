@@ -1,8 +1,8 @@
-package com.hfad.android.hotcats.data
+package com.hfad.android.funnycats.data
 
 import androidx.paging.DataSource
 import androidx.paging.PagingData
-import com.hfad.android.hotcats.model.Cat
+import com.hfad.android.funnycats.model.Cat
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.GET

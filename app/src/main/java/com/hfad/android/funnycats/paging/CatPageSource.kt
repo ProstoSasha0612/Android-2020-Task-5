@@ -1,10 +1,10 @@
-package com.hfad.android.hotcats.paging
+package com.hfad.android.funnycats.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.hfad.android.hotcats.data.CatApi
-import com.hfad.android.hotcats.data.toCat
-import com.hfad.android.hotcats.model.Cat
+import com.hfad.android.funnycats.data.CatApi
+import com.hfad.android.funnycats.data.toCat
+import com.hfad.android.funnycats.model.Cat
 import retrofit2.HttpException
 
 class CatPageSource(

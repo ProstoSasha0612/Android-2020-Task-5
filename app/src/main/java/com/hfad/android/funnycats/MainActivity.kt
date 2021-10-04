@@ -1,9 +1,9 @@
-package com.hfad.android.hotcats
+package com.hfad.android.funnycats
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.hfad.android.hotcats.databinding.ActivityMainBinding
-import com.hfad.android.hotcats.fragments.CatListFragment
+import com.hfad.android.funnycats.fragments.CatListFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun openCatListFragment(){
         supportFragmentManager.beginTransaction()
-            .replace(R.id.container,CatListFragment.newInstance())
+            .replace(R.id.container, CatListFragment.newInstance())
             .commit()
     }
 

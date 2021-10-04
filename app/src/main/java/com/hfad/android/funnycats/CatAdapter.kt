@@ -1,15 +1,15 @@
-package com.hfad.android.hotcats
+package com.hfad.android.funnycats
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.hfad.android.hotcats.databinding.CatItemBinding
-import com.hfad.android.hotcats.model.Cat
+import com.hfad.android.funnycats.R
+import com.hfad.android.funnycats.databinding.CatItemBinding
+import com.hfad.android.funnycats.model.Cat
 
 class CatAdapter(val context: Context) :
     PagingDataAdapter<Cat, CatAdapter.CatViewHolder>(itemComparator) {
@@ -39,7 +39,6 @@ class CatAdapter(val context: Context) :
     }
 
     companion object {
-        //TODO change to equals
         val itemComparator = object : DiffUtil.ItemCallback<Cat>() {
             override fun areItemsTheSame(oldItem: Cat, newItem: Cat): Boolean {
                 return oldItem == newItem

@@ -7,7 +7,7 @@ android {
     compileSdk 30
 
     defaultConfig {
-        applicationId "com.hfad.android.hotcats"
+        applicationId "com.hfad.android.funnycats"
         minSdk 21
         targetSdk 30
         versionCode 1

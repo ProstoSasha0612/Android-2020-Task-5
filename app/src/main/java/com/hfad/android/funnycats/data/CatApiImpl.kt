@@ -1,9 +1,9 @@
-package com.hfad.android.hotcats.data
+package com.hfad.android.funnycats.data
 
 import android.media.Image
 import android.util.Log
 import androidx.paging.toLiveData
-import com.hfad.android.hotcats.model.Cat
+import com.hfad.android.funnycats.model.Cat
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.*

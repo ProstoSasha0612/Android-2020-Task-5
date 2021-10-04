@@ -1,4 +1,4 @@
-package com.hfad.android.hotcats.fragments
+package com.hfad.android.funnycats.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,13 +13,13 @@ import androidx.paging.CombinedLoadStates
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.hfad.android.hotcats.CatAdapter
-import com.hfad.android.hotcats.data.CatApi
-import com.hfad.android.hotcats.data.CatApiImpl
-import com.hfad.android.hotcats.viemodels.CatListViewModel
+import com.hfad.android.funnycats.CatAdapter
+import com.hfad.android.funnycats.data.CatApi
+import com.hfad.android.funnycats.data.CatApiImpl
+import com.hfad.android.funnycats.viemodels.CatListViewModel
 import com.hfad.android.hotcats.databinding.CatListFragmentBinding
-import com.hfad.android.hotcats.model.Cat
-import com.hfad.android.hotcats.viemodels.CatListViewModelFactory
+import com.hfad.android.funnycats.model.Cat
+import com.hfad.android.funnycats.viemodels.CatListViewModelFactory
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch

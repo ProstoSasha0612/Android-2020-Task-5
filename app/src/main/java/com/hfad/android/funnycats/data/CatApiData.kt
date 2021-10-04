@@ -1,6 +1,6 @@
-package com.hfad.android.hotcats.data
+package com.hfad.android.funnycats.data
 
-import com.hfad.android.hotcats.model.Cat
+import com.hfad.android.funnycats.model.Cat
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
