@@ -1,4 +1,4 @@
-package com.hfad.android.hotcats
+package com.hfad.android.funnycats
 
 import org.junit.Test
 
