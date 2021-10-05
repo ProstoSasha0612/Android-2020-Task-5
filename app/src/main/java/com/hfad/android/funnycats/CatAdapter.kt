@@ -57,7 +57,6 @@ class CatAdapter(context: Context?) :
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream)
             val byteArray = stream.toByteArray()
             openDetailsCallback.onItemCLickOpenDetails(byteArray)
-
         }
     }
 

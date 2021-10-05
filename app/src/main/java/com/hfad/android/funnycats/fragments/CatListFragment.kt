@@ -1,6 +1,5 @@
 package com.hfad.android.funnycats.fragments
 
-import android.animation.AnimatorSet
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,17 +12,15 @@ import androidx.paging.CombinedLoadStates
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hfad.android.funnycats.CatAdapter
-import com.hfad.android.funnycats.R
 import com.hfad.android.funnycats.data.CatApiImpl
 import com.hfad.android.funnycats.databinding.CatListFragmentBinding
-import com.hfad.android.funnycats.model.Cat
 import com.hfad.android.funnycats.viemodels.CatListViewModel
 import com.hfad.android.funnycats.viemodels.CatListViewModelFactory
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-class CatListFragment() : Fragment(){
+class CatListFragment() : Fragment() {
 
     private lateinit var viewModel: CatListViewModel
     private var _binding: CatListFragmentBinding? = null

@@ -48,7 +48,7 @@ class CatDetailsFragment : Fragment() {
         }
         //Getting acquired image from CatListFragment
         val byteArray = arguments?.getByteArray(IMAGE)
-        val bitmap = BitmapFactory.decodeByteArray(byteArray,0,byteArray?.size?:0)
+        val bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray?.size ?: 0)
         binding.catDetailImage.setImageBitmap(bitmap)
     }
 

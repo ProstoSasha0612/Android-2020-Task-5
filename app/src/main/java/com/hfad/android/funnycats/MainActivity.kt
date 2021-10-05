@@ -1,12 +1,12 @@
 package com.hfad.android.funnycats
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.hfad.android.funnycats.databinding.ActivityMainBinding
 import com.hfad.android.funnycats.fragments.CatDetailsFragment
 import com.hfad.android.funnycats.fragments.CatListFragment
 
-class MainActivity : AppCompatActivity(),CatAdapter.OnItemCLickCallback  {
+class MainActivity : AppCompatActivity(), CatAdapter.OnItemCLickCallback {
 
     private var _binding: ActivityMainBinding? = null
     private val binding
@@ -19,9 +19,8 @@ class MainActivity : AppCompatActivity(),CatAdapter.OnItemCLickCallback  {
 
         openCatListFragment()
     }
-
-
-    private fun openCatListFragment(){
+    
+    private fun openCatListFragment() {
         supportFragmentManager.beginTransaction()
             .replace(R.id.container, CatListFragment.newInstance())
             .commit()
@@ -29,7 +28,7 @@ class MainActivity : AppCompatActivity(),CatAdapter.OnItemCLickCallback  {
 
     override fun onItemCLickOpenDetails(byteArray: ByteArray) {
         supportFragmentManager.beginTransaction()
-            .setCustomAnimations(R.animator.back_animator,R.animator.front_animator)
+            .setCustomAnimations(R.animator.back_animator, R.animator.front_animator)
             .replace(R.id.container, CatDetailsFragment.newInstance(byteArray))
             .commit()
     }

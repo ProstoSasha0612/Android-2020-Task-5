@@ -31,13 +31,4 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Murzik" />
 
-<!--    <WebView
-        android:id="@+id/webview"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@drawable/cat_loading"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/title"
-        app:layout_constraintTop_toTopOf="parent" />-->
-
 </androidx.constraintlayout.widget.ConstraintLayout>
